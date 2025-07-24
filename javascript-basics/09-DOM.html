@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DOM</title>
+</head>
+
+<body>
+
+    <button>HELLO</button>
+    <button class="js-button">Second button</button>
+
+    <p>Amazon shipping calculator</p>
+
+    <p>Orders under 40$ - +10$ shipping</p>
+    <p>Orders over 40$ - FREE shipping</p>
+    <input onkeydown="updateOnEnter(event)" class='js-total-input' placeholder="Cost of order">
+    <button onclick='calculateTotal()'>Calculate</button>
+    <p class='js-total-cost'></p>
+
+    <script>
+
+        console.log(window);
+        window.console.log('window');
+
+        document.title = 'CHANGED TITLE';
+        console.log(document.querySelector('button').innerHTML);
+        document.querySelector('button').innerHTML = 'changed button';
+        document.querySelector('.js-button').innerHTML = 'BOMBACLAT'
+
+        const buttonElement = document.querySelector('.js-button');
+        console.log(buttonElement);
+
+        function calculateTotal() {
+            const inputElement = document.querySelector('.js-total-input');
+            let cost = Number(inputElement.value);
+
+            if (cost < 40) {
+                cost = cost + 10;
+            }
+
+            document.querySelector('.js-total-cost').innerHTML = `${cost}`;
+        }
+
+        function updateOnEnter(event) {
+            if (event.key === 'Enter') {
+                calculateTotal();
+            }
+        }
+
+        /*
+        console.log(document);
+
+        console.log(document.body);
+
+        console.log(document.body.innerHTML);
+
+        document.body.innerHTML = '<button>GOOD JOB</button>';
+        */
+
+
+
+    </script>
+</body>
+
+</html>

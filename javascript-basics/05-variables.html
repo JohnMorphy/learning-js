@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<title>VARIABLES</title>
+
+<head>
+
+</head>
+
+<body>
+
+    <p>Cart Quantity</p>
+    <button onClick="showQuantity()">Show quantity</button>
+    <button onclick='addToCart(1)'>Add to Cart</button>
+    <button onclick='addToCart(2)'>+2</button>
+    <button onclick='addToCart(3)'>+3</button>
+    <button onclick='resetCart()''>Reset Cart</button>
+
+    <script>
+        let cartQuantity = 0;
+
+        function showQuantity() {
+            alert(' Cart quantity: ' + cartQuantity);
+        }
+
+        function addToCart(count) {
+            cartQuantity += count;
+            showQuantity();
+        }
+
+        function resetCart() {
+            cartQuantity = 0;
+            alert(' Cart has been reset'); showQuantity();
+        } </script>
+</body>
+
+</html>

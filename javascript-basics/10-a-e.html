@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .amazon-button {
+            background-color: rgb(255, 216, 20);
+            border: 0px;
+            border-radius: 30px;
+            padding: 6px 40px;
+            font-weight: 700;
+        }
+
+        .gaming-button {
+            padding: 7px 15px;
+            border-radius: 5px;
+            color: black;
+            background-color: rgb(195, 195, 195);
+            border: none;
+        }
+
+        .is-toggled {
+            color: white;
+            background-color: black;
+
+        }
+    </style>
+</head>
+
+<body>
+    <button class="amazon-button">Add to card</button>
+
+    <button class="js-button">Test</button>
+
+    <button onclick="toggle(this)" class="js-gaming-button gaming-button">Gaming</button>
+    <button onclick="toggle(this)" class="js-gaming-button gaming-button">Music</button>
+    <button onclick="toggle(this)" class="js-gaming-button gaming-button">Tech</button>
+
+
+
+    <script>
+        const jsButton = document.querySelectorAll('.js-button');
+
+        console.log(jsButton);
+        console.log(jsButton.classList);
+        console.log(jsButton.classList.contains('js-button'));
+
+        function toggle(highlightedElement) {
+            const buttons = document.querySelectorAll('.js-gaming-button');
+
+            buttons.forEach(element => {
+                element.classList.remove('is-toggled');
+            });
+
+            highlightedElement.classList.add('is-toggled');
+        }
+
+        function unToggle() {
+            document.querySelector('.js-gaming-button').classList.add('is-toggled');
+        }
+
+
+    </script>
+</body>
+
+</html>

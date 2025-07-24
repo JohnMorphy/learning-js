@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculator</title>
+</head>
+
+<body>
+    <div class='calculator-container'>
+
+        <p id='display'>0</p>
+        <p id='currentNumber'>0</p>
+        <p>
+            <button class='digit-button' onclick='addDigit(7)'>7</button>
+            <button class='digit-button' onclick='addDigit(8)'>8</button>
+            <button class='digit-button' onclick='addDigit(9)'>9</button>
+            <button class='operator-button' onclick='add()'>+</button>
+        </p>
+        <p>
+            <button class='digit-button' onclick='addDigit(4)'>4</button>
+            <button class='digit-button' onclick='addDigit(5)'>5</button>
+            <button class='digit-button' onclick='addDigit(6)'>6</button>
+            <button class='operator-button' onclick='subtractNumber()'>-</button>
+        </p>
+        <p>
+            <button class='digit-button' onclick='addDigit(1)'>1</button>
+            <button class='digit-button' onclick='addDigit(2)'>2</button>
+            <button class='digit-button' onclick='addDigit(3)'>3</button>
+            <button class='operator-button' onclick='multiplyNumber()'>*</button>
+
+        </p>
+        <p>
+            <button class='digit-button' onclick='addDigit(0)'>0</button>
+            <button class='operator-button' onclick='divideNumber()'>/</button>
+
+        </p>
+
+
+    </div>
+
+
+    <script>
+        let result = 0;
+        let currentNumber = '0';
+
+
+        function addDigit(digit) {
+            if (currentNumber == '0' && digit == '0') {
+            } else if (currentNumber == '0') {
+                currentNumber = '' + digit;
+            } else {
+                currentNumber += digit;
+            }
+            setDisplay();
+        }
+
+        function setDisplay() {
+            document.getElementById('currentNumber').innerHTML = currentNumber;
+            document.getElementById('display').innerHTML = result;
+        }
+
+        function add() {
+            result = Number(result) + Number(currentNumber);
+            currentNumber = '0';
+
+            setDisplay();
+        }
+
+    </script>
+
+</body>
+
+</html>

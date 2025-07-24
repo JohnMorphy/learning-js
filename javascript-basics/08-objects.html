@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Objects in JS</title>
+</head>
+
+<body>
+
+    <script>
+        const product2 = {
+            name: 'shirt',
+            ['delivery-time']: '1 day',
+            rating: {
+                starts: 4.5,
+                count: 87
+            },
+            fun: function () {
+                console.log('function inside object')
+            }
+        }
+
+        console.log(product2.name);
+        console.log(product2['name']);
+        console.log(product2['delivery-time']);
+        console.log("function type with (): " + typeof product2.fun());
+        console.log("function type - without (): " + typeof product2.fun);
+        product2.fun();
+
+        console.log(JSON.stringify(product2));
+
+        let jsonString = JSON.stringify(product2);
+        jsonString = JSON.parse(jsonString);
+        console.log(jsonString);
+
+        // AUTOBOXING
+
+        console.log("HELLO".length);
+        console.log("hello".toUpperCase());
+
+        const object1 = {
+            message: 'hello, its me'
+        }
+        const object2 = object1;
+        object1.message = 'GOOD boy ;pp'
+
+        const object3 = {
+            message: 'GOOD boy ;pp'
+        }
+        console.log(object1 === object3);
+
+        const object4 = {
+            message: 'GOOD boy ;pp',
+            price: 799
+        }
+        // const message = object4.message;
+        const { message, price } = object4;
+        console.log(price);
+        console.log(message);
+
+        const object5 = {
+            // message: message,
+            // price: price
+            message,
+            price,
+            // method: function function1() {
+            //     console.log('method');
+            // }
+            method() {
+                console.log('method')
+            }
+        };
+
+        console.log(object5);
+        object5.method();
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+.test {
+    background-color: yellow;
+}
+
+#paragraph {
+    color: #b25151;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+.yellow-button {
+    background-color: yellow;
+}
+
+.orange-button {
+    background-color: orange;
+}

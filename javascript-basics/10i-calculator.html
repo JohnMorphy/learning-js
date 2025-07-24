@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="10i-calculator.css">
+</head>
+
+<body>
+    <div class='calculator-container'>
+
+        <p class='display' id='currentNumber'>0</p>
+        <p>
+            <button class='digit-button' onclick='addDigit(7)'>7</button>
+            <button class='digit-button' onclick='addDigit(8)'>8</button>
+            <button class='digit-button' onclick='addDigit(9)'>9</button>
+            <button class='digit-button operator-button' onclick="addOperator('+')">+</button>
+        </p>
+        <p>
+            <button class='digit-button' onclick='addDigit(4)'>4</button>
+            <button class='digit-button' onclick='addDigit(5)'>5</button>
+            <button class='digit-button' onclick='addDigit(6)'>6</button>
+            <button class='digit-button operator-button' onclick="addOperator('-')"'>-</button>
+        </p>
+        <p>
+            <button class=' digit-button' onclick='addDigit(1)'>1</button>
+            <button class='digit-button' onclick='addDigit(2)'>2</button>
+            <button class='digit-button' onclick='addDigit(3)'>3</button>
+            <button class='digit-button operator-button' onclick="addOperator('*')">*</button>
+
+        </p>
+        <p>
+            <button class='digit-button' onclick='addDigit(0)'>0</button>
+            <button class='digit-button' onclick='divideNumber()'>.</button>
+            <button class='digit-button' onclick='evaluateEquation()'>=</button>
+            <button class='digit-button operator-button' onclick="addOperator('/')">/</button>
+        </p>
+        <p>
+            <button class='digit-button clear-button' onclick="clear()">clear</button>
+        </p>
+
+    </div>
+
+
+    <script>
+        let currentNumber = '0';
+
+
+        function addDigit(digit) {
+            if (currentNumber == '0' && digit == '0') {
+            } else if (currentNumber == '0') {
+                currentNumber = '' + digit;
+            } else {
+                currentNumber = String(currentNumber) + String(digit);
+            }
+            setDisplay();
+        }
+
+        function addOperator(operator) {
+            currentNumber = `${currentNumber} ${operator} `;
+            setDisplay();
+        }
+
+        function setDisplay() {
+            document.getElementById('currentNumber').innerHTML = currentNumber;
+        }
+
+        function evaluateEquation() {
+            setDisplay();
+        }
+
+        function clear() {
+            currentNumber = '0';
+            console.log(currentNumber);
+            setDisplay();
+        }
+
+    </script>
+
+</body>
+
+</html>

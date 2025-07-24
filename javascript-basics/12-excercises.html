@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>App</title>
+</head>
+
+<body>
+
+    <button class="js-button" onclick="start()">Start</button>
+    <button class="js-add=to-cart" onclick="addToCart()">Add to cart</button>
+    <div class="js-message"></div>
+    <button onclick='addMessage()'>ADD</button>
+    <button onclick='removeMessage()'>REMOVE</button>
+    <script>
+        const defaultTitle = 'APP';
+        document.title = defaultTitle;
+
+        let value = 0;
+
+        function add() {
+            console.log(2 + 3);
+        }
+
+        function runTwice(fun) {
+            fun();
+            fun();
+        }
+
+        runTwice(add);
+
+        function start() {
+            document.querySelector('.js-button').innerHTML = 'Loading...'
+
+            setTimeout(() => {
+                document.querySelector('.js-button').innerHTML = 'Finished!'
+            }, 2000);
+        }
+
+        let timeoutID;
+
+        function addToCart() {
+            document.querySelector('.js-message').innerHTML = 'Added to cart!';
+            clearTimeout(timeoutID);
+            timeoutID = setTimeout(() => {
+                document.querySelector('.js-message').innerHTML = '';
+            }, 2000);
+        }
+
+        messageCount = 0;
+
+        function addMessage() {
+            messageCount++;
+        }
+
+        function removeMessage() {
+            if (messageCount > 0) {
+                messageCount--;
+            }
+        }
+
+        setInterval(() => {
+            if (messageCount <= 0) {
+                document.title = defaultTitle;
+                return;
+            }
+
+            if (document.title === defaultTitle) {
+                document.title = `(${messageCount}) New messages`;
+            } else {
+                document.title = defaultTitle;
+            }
+
+        }, 1000);
+
+
+    </script>
+</body>
+
+</html>

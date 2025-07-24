@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html>
+
+<head></head>
+
+<body>
+    <script>
+
+        /*
+        //18a - xhr + callbacks
+        const xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', (test) => {
+            console.log(xhr.response);
+        });
+
+        xhr.open('GET', "https://supersimplebackend.dev/greeting")
+        xhr.send();
+
+        //18b - fetch + promise
+        fetch("https://supersimplebackend.dev/greeting", {
+            method: "GET",
+        }).then((response) => {
+            return response.text();
+        }).then((text) => {
+            console.log(text);
+        }).catch((error) => {
+            console.log('fetch failed, loading a placeholder..');
+        });
+
+        //18c - async + await
+        console.log("before (spinner etc - sume fill in)")
+        fetchTest();
+        console.log("now - display actual data from backend or some error, that data is unavailable")
+
+        async function fetchTest() {
+            const fetched = await fetch("https://supersimplebackend.dev/greeting", {
+                method: "GET",
+            });
+
+            const text = await fetched.text();
+            console.log(text);
+        }
+
+        //18d
+
+        postName().then((response) => {
+            console.log(response);
+        });
+
+        async function postName() {
+
+            const greeting = await fetch("https://supersimplebackend.dev/greeting", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: "Janek"
+                })
+            });
+
+            return await greeting.text();
+        }
+
+        //18e, 18f
+        getAmazon()
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log("CORS ERROR; rquest blocked by backend");
+            })
+
+        async function getAmazon() {
+
+            const amazonRequest = await fetch("https://amazon.com");
+            return await amazonRequest.text();
+        }
+        */
+
+        //18g
+
+        postNameWIthHandling();
+
+        async function postNameWIthHandling() {
+
+            const greeting = fetch("https://supersimplebackend.dev/greeting", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+
+
+            greeting.then(async (response) => {
+                if (response.status >= 400) {
+                    throw response;
+                } else {
+                    const hello = await response.json();
+                    console.log(hello);
+                }
+            }).catch(async (error) => {
+                if (error.status === 400) {
+                    console.log(await error.text());
+                } else {
+                    console.log("Network error. Please try again later");
+                }
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>

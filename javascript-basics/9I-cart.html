@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<title>VARIABLES</title>
+
+<head>
+
+</head>
+
+<body>
+
+    <p>Cart Quantity</p>
+    <button onclick='addToCart(1)'>Add to Cart</button>
+    <button onclick='addToCart(2)'>+2</button>
+    <button onclick='addToCart(3)'>+3</button>
+    <button onclick='resetCart()''>Reset Cart</button>
+
+    <p class = ' quantity'></p>
+
+        <script>
+            let quantity = Number(localStorage.getItem('quantity')) || 0;
+            displayCartQuantity();
+
+            function displayCartQuantity() {
+                document.querySelector('.quantity').innerHTML = `Cart quantity ${quantity}`;
+            }
+
+            function addToCart(count) {
+                quantity += count;
+                displayCartQuantity();
+                localStorage.setItem('quantity', quantity);
+            }
+
+            function resetCart() {
+                quantity = 0;
+                displayCartQuantity();
+                alert('Cart has been reset');
+            }
+        </script>
+</body>
+
+</html>

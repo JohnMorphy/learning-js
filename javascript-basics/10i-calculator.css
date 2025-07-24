@@ -1,0 +1,30 @@
+body {
+    background-color: black;
+    font-family: Arial;
+}
+
+.display {
+    font-size: 40px;
+    color: white;
+    margin: 0px;
+}
+
+.digit-button {
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 40px;
+    background-color: gray;
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.operator-button {
+    background-color: rgb(203, 132, 0);
+}
+
+.clear-button {
+    font-size: 10px;
+}

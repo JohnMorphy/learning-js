@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+
+<body>
+    <script>
+        const basketball = {
+            name: 'basketball',
+            price: 20.95
+        };
+
+        const baseballBat = {
+            name: 'baseball bat',
+            price: 30.99
+        };
+
+        console.log(basketball);
+        basketball.price += 5.00;
+        basketball['delivery-time'] = '3 days';
+
+        function comparePrice(product1, product2) {
+            if (product1.price > product2.price) {
+                return product2;
+            } else {
+                return product1;
+            }
+        }
+
+        console.log("Cheaper product: " + comparePrice(baseballBat, basketball));
+
+    </script>
+</body>
+
+</html>
