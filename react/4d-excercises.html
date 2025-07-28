@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>4d - Excercises</title>
+  <style>
+    body {
+      font-family: Arial;
+    }
+
+    .welcome-text {
+      font-size: 25px;
+      margin: 0px 0px 10px 0px;
+    }
+
+    .login-input {
+      padding: 10px 15px;
+      width: 120px;
+      margin-top: 10px;
+    }
+
+    .login-button {
+      background-color: rgb(0, 123, 255);
+      color: white;
+      border-radius: 5px;
+      padding: 10px 15px;
+      margin-right: 10px;
+      margin-top: 10px;
+      border-width: 0px;
+    }
+
+    .login-container {
+      width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .show-button {
+      margin-left: 5px;
+      height: 100%;
+    }
+
+    .clock {
+      justify-content: end;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="js-container"></div>
+
+  <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+  <script type="text/babel">
+
+    function LoginForm() {
+
+      const [showPassword, setShowPassword] = React.useState(false);
+
+      const passwordInputRef = React.useRef(null);
+      const showButtonRef = React.useRef(null);
+
+      React.useEffect(() => {
+        const passwordInputElement = passwordInputRef.current;
+        const showButtonElement = showButtonRef.current;
+
+        if (passwordInputElement && showButtonElement) {
+          if (showPassword) {
+            passwordInputElement.type = "text";
+            showButtonElement.innerHTML = "Hide";
+          } else {
+            passwordInputElement.type = "password";
+            showButtonElement.innerHTML = "Show";
+          }
+        }
+
+      }, [showPassword]);
+
+      function showPasswordSwitch() {
+        setShowPassword(!showPassword);
+      }
+
+      return (
+        <div className="login-container">
+          <p className="welcome-text">Hello, welcome to my website</p>
+          <div>
+            <input className="login-input" type="text" placeholder="Email" />
+          </div>
+          <div>
+            <input
+              className="login-input"
+              type="password"
+              placeholder="Password"
+              ref={passwordInputRef}
+            />
+            <button
+              ref={showButtonRef}
+              onClick={showPasswordSwitch}
+              className="show-button">
+              Show
+            </button>
+          </div>
+          <div>
+            <button className="login-button">Login</button>
+            <button className="login-button">Sign up</button>
+          </div>
+        </div>
+      )
+    }
+
+    function ShowCurrentTime() {
+
+      const [currentTime, setCurrentTime] = React.useState(dayjs().format('HH:mm:ss'));
+
+      const clockRef = React.useRef(null);
+
+      React.useEffect(() => {
+        setInterval(() => {
+          console.log('run code');
+          setCurrentTime(dayjs().format('HH:mm:ss'));
+        }, 1000)
+      }, []);
+
+      React.useEffect(() => {
+        console.log('run code - switch');
+        const clockElement = clockRef.current;
+      }, [currentTime]);
+
+      return (
+        <div
+          className="clock"
+          ref={clockRef}
+        >
+          Current time: {currentTime}
+        </div>
+      )
+
+    }
+
+    function App() {
+      return (
+        <>
+          <ShowCurrentTime />
+          <LoginForm />
+        </>
+      )
+    }
+
+    const container = document.querySelector('.js-container');
+    ReactDOM.createRoot(container).render(<App />);
+  </script>
+</body>
+
+</html>

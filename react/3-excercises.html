@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Excercises - 3</title>
+</head>
+
+<body>
+  <div class="js-container"></div>
+
+  <script src="./react-basics.js"></script>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+  <script type="text/babel">
+
+    function ClickCounter({ clickCounter, setClickCounter }) {
+      return (
+        <>
+          <button onClick={() => {
+            setClickCounter(Number(clickCounter) + Number(1));
+          }}>
+            Clicked {clickCounter} {clickCounter === 1 ? "time" : "times"}
+          </button>
+        </>
+      )
+    }
+
+    function ResetCounter({ setClickCounter }) {
+      return (
+        <>
+          <button onClick={() => {
+            setClickCounter(0);
+          }}>
+            Reset
+          </button>
+        </>
+      )
+    }
+
+    function TextInput({ textInput, setTextInput }) {
+      return (
+        <>
+          <input
+            type="text"
+            value={textInput}
+            placeholder="Type a name here"
+            onChange={
+              event => {
+                setTextInput(event.target.value);
+              }
+            }
+          />
+          <button onClick={() => {
+            setTextInput('');
+          }}>
+            Reset
+          </button>
+          <button onClick={() => {
+            setTextInput('Roxanne');
+          }}>
+            Example
+          </button>
+          <p>Hello {textInput}</p>
+        </>
+      )
+    }
+
+    function App() {
+
+      const [clickCounter, setClickCounter] = React.useState(0);
+
+      const [textInput, setTextInput] = React.useState();
+
+      return (
+        <div>
+          <ClickCounter clickCounter={clickCounter} setClickCounter={setClickCounter} />
+          <ClickCounter clickCounter={clickCounter} setClickCounter={setClickCounter} />
+          <ResetCounter setClickCounter={setClickCounter} />
+          <br />
+          <TextInput textInput={textInput} setTextInput={setTextInput} />
+
+        </div>
+      )
+
+    }
+
+    const container = document.querySelector('.js-container');
+    ReactDOM.createRoot(container).render(<App />);
+  </script>
+</body>
+
+</html>

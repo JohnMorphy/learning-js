@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<head>
+
+</head>
+
+
+<body>
+
+  <div class='js-react-container'></div>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+  <script type="text/babel">
+
+    function Product(props) {
+      const { name, price, discountPrice, imgUrl } = props;
+      return (
+        <div>
+          {
+            imgUrl && (
+              <img src={imgUrl} width="100px" />
+            )
+          }
+          <p>{name}</p>
+          {
+            !discountPrice ? (
+              <p>Price: ${price}</p>
+            ) : (
+              <>
+                <p style={{ textDecoration: 'line-through' }}>Price: ${price}</p>
+                <p>DISCOUNT: ${discountPrice}</p>
+              </>
+            )
+          }
+          <button>Add to cart</button>
+        </div>
+      )
+    }
+
+    function App() {
+
+      return (
+        <div>
+          <Product imgUrl="https://supersimple.dev/images/cotton-socks.png" name="Cotton socks" price="10.00" discountPrice="7.99" />
+          <Product name="Tennis balls" price="6.00" />
+          <Product name="Plain T-shirt" price="7.99" />
+        </div>
+      )
+    }
+
+    const container = document.querySelector('.js-react-container');
+    ReactDOM.createRoot(container).render(<App />);
+
+  </script>
+</body>

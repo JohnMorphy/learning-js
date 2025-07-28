@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>4 - Excercises</title>
+
+    <style>
+        .switch-button-on {
+            color: white;
+            background-color: rgb(25, 135, 84);
+            border-radius: 5px;
+            padding: 10px 15px;
+            border-width: 0px;
+            cursor: pointer;
+        }
+
+        .switch-button-off {
+            color: white;
+            background-color: rgb(220, 53, 69);
+            border-radius: 5px;
+            padding: 10px 15px;
+            border-width: 0px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="js-react-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+
+
+        function App() {
+
+            return (
+                <div>
+                    <OnOffButton />
+                </div>
+            );
+        }
+
+        function OnOffButton() {
+
+            const [isOn, setIsOn] = React.useState(false);
+            const buttonElementRef = React.useRef(null);
+
+            React.useEffect(() => {
+                const buttonElement = buttonElementRef.current;
+                if (buttonElement) {
+                    if (!isOn) {
+                        buttonElement.classList.remove('switch-button-off');
+                        buttonElement.classList.add('switch-button-on');
+                        buttonElement.innerHTML = "ON";
+                    } else {
+                        buttonElement.classList.remove('switch-button-on');
+                        buttonElement.classList.add('switch-button-off');
+                        buttonElement.innerHTML = "OFF";
+                    }
+                }
+            }, [isOn]);
+
+            function switchButton() {
+                setIsOn(!isOn);
+            }
+
+            return (
+                <>
+                    <button
+                        ref={buttonElementRef}
+                        onClick={switchButton}>
+                    </button>
+                </>
+            )
+        }
+
+        const container = document.querySelector('.js-react-container');
+        ReactDOM.createRoot(container).render(<App />);
+
+    </script>
+</body>
+
+</html>
