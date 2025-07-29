@@ -8,6 +8,18 @@
     cursor: pointer;
 }
 
+.clear-button {
+    background-color: rgb(193, 193, 193);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+
+}
+
 .user-input {
     padding: 10px 20px;
     border-radius: 10px;

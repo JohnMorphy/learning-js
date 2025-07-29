@@ -1,10 +1,12 @@
 import RobotProfileImage from '../assets/chatbot-resources/robot.png';
-import UserProfileImage from '../assets/chatbot-resources/user.png';
+import UserProfileImage from '../assets/chatbot-resources/profile-1.jpg';
 
 import './ChatMessage.css'
 
 export default function ChatMessage(props) {
-    const { message, sender } = props;
+    const { message, sendDate, sender } = props;
+
+    console.log(sendDate);
 
     return (
         <div className={
@@ -16,12 +18,19 @@ export default function ChatMessage(props) {
                     alt="robot image"
                     className="chat-message-profile"
                 />}
-            <div className="chat-message-text">{message}</div>
+            <div className="chat-message-text">{message}
+                {sendDate && (
+                    <div className="chat-message-date">
+                        {sendDate}
+                    </div>
+                )}
+            </div>
             {sender === 'user' &&
                 <img src={UserProfileImage}
                     alt="user image"
                     className="chat-message-profile"
                 />}
+
         </div>
     )
 

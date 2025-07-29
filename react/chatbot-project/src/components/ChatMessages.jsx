@@ -43,6 +43,7 @@ export default function ChatMessages({ chatMessages }) {
                 return (
                     <ChatMessage
                         message={chatMessage.message}
+                        sendDate={chatMessage.sendDate}
                         sender={chatMessage.sender}
                         key={chatMessage.id}
                     />
