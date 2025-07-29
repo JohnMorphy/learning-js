@@ -5,6 +5,8 @@ export default function HomePage() {
   return (
     <>
       <title>Ecommerce project</title>
+      <link rel="icon" type="image/svg+xml" href="/home-favicon.png" />
+
 
       <Header />
 
