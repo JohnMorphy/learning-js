@@ -6,6 +6,7 @@ import TrackingPage from './pages/TrackingPage'
 import { Routes, Route } from 'react-router'
 
 import './index.css'
+import NotFound from './pages/404'
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="checkout" element={<CheckoutPage />} />
         <Route path="orders" element={<OrdersPage />} />
         <Route path="tracking" element={<TrackingPage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   )
