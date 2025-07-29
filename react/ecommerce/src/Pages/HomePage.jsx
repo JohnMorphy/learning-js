@@ -4,6 +4,15 @@ import './HomePage.css'
 import { products } from '../data/products.js'
 
 export default function HomePage() {
+
+
+
+  fetch('http://localhost:3000/api/products')
+    .then(async (response) => {
+      const productData = await response.json();
+      console.log(productData);
+    });
+
   return (
     <>
       <title>Ecommerce project</title>
