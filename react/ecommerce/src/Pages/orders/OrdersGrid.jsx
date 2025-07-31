@@ -4,7 +4,6 @@ import { Fragment } from "react"
 import { Link } from 'react-router';
 
 export default function OrdersGrid({ orders }) {
-  console.log(orders);
 
   return (
     <div className="orders-grid">

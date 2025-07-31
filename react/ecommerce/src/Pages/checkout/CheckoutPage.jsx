@@ -6,12 +6,10 @@ import './CheckoutPage.css';
 import OrderSummary from './OrderSummary';
 import PaymentSummary from './PaymentSummary';
 
-export default function CheckoutPage({ cart }) {
+export default function CheckoutPage({ cart, loadCart }) {
 
   const [deliveryOptions, setDeliveryOptions] = useState([]);
   const [paymentSummary, setPaymentSummary] = useState(null);
-
-  console.log(cart);
 
   useEffect(() => {
 
@@ -24,7 +22,7 @@ export default function CheckoutPage({ cart }) {
     }
 
     fetchCheckoutData();
-  }, [])
+  }, [cart]) // whenever cart changes --> update payment summary
 
   return (
     <>
@@ -38,7 +36,7 @@ export default function CheckoutPage({ cart }) {
 
         <div className="checkout-grid">
 
-          <OrderSummary deliveryOptions={deliveryOptions} cart={cart} />
+          <OrderSummary deliveryOptions={deliveryOptions} cart={cart} loadCart={loadCart} />
 
           {paymentSummary && (
             <PaymentSummary paymentSummary={paymentSummary} />
