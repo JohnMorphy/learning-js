@@ -5,8 +5,22 @@ import axios from "axios";
 export default function Product({ product, loadCart }) {
 
     const [quantity, setQuantity] = useState(1);
+    const [recentlyAdded, setRecentlyAdded] = useState(false);
+
+    let addedToCartEventId = '';
 
     const addToCart = async () => {
+
+        if (addedToCartEventId !== '') {
+            console.log('CLEARED');
+            clearTimeout(addedToCartEventId);
+        }
+
+        setRecentlyAdded(true);
+        addedToCartEventId = setTimeout(() => {
+            setRecentlyAdded(false);
+        }, 2000)
+
         await axios.post('api/cart-items', {
             productId: product.id,
             quantity: quantity
@@ -59,7 +73,7 @@ export default function Product({ product, loadCart }) {
 
             <div className="product-spacer"></div>
 
-            <div className="added-to-cart">
+            <div className="added-to-cart" style={{ opacity: recentlyAdded ? 1 : 0 }}>
                 <img src="images/icons/checkmark.png" />
                 Added
             </div>
