@@ -24,7 +24,7 @@ export default function OrderSummary({ deliveryOptions, cart, loadCart }) {
               <img className="product-image"
                 src={cartItem.product.image} />
 
-              <CartItemDetails cartItem={cartItem} />
+              <CartItemDetails cartItem={cartItem} loadCart={loadCart} />
 
               <DeliveryOptions deliveryOptions={deliveryOptions} cartItem={cartItem} loadCart={loadCart} />
             </div>

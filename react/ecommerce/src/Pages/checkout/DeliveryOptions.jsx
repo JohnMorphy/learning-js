@@ -5,8 +5,6 @@ import axios from "axios";
 
 export default function DeliveryOptions({ deliveryOptions, cartItem, loadCart }) {
 
-  console.log({ deliveryOptions, cartItem, loadCart })
-
   return (
     <div className="delivery-options">
       <div className="delivery-options-title">
@@ -14,7 +12,6 @@ export default function DeliveryOptions({ deliveryOptions, cartItem, loadCart })
       </div>
 
       {deliveryOptions.map((deliveryOption) => {
-        console.log({ deliveryOption, correctDeliveryOption: (deliveryOption.id === cartItem.deliveryOptionId) });
 
         let priceString = 'FREE shipping';
 
