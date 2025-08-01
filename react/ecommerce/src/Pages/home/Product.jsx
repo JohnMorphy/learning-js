@@ -39,7 +39,7 @@ export default function Product({ product, loadCart }) {
             data-testid='product-container'>
             <div className="product-image-container">
                 <img className="product-image"
-                    data-testId="product-image"
+                    data-testid="product-image"
                     src={product.image} />
             </div>
 
@@ -61,7 +61,11 @@ export default function Product({ product, loadCart }) {
             </div>
 
             <div className="product-quantity-container">
-                <select value={quantity} onChange={selectQuantity}>
+                <select
+                    value={quantity}
+                    onChange={selectQuantity}
+                    data-testid='quantity-selector'
+                >
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
