@@ -49,5 +49,6 @@ export default function HomePage({ cart, loadCart }) {
         <ProductsGrid products={products} loadCart={loadCart} />
       </div>
     </>
+
   );
 }
