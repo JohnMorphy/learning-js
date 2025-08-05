@@ -13,8 +13,6 @@ import NotFound from './pages/404'
 
 function App() {
 
-  window.axios = axios;
-
   const [cart, setCart] = useState([]);
 
   const loadCart = async () => {

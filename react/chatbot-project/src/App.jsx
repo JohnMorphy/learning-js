@@ -32,15 +32,20 @@ function App() {
   console.log(chatMessages)
 
   return (
-    <div className="app-container">
-      <ChatMessages
-        chatMessages={chatMessages}
-      />
-      <ChatInput
-        chatMessages={chatMessages}
-        setChatMessages={setChatMessages}
-      />
-    </div>
+    <>
+      <title>{`${chatMessages.length} Messages`}</title>
+      <link rel="icon" type="image" href="/chatbot-resources/robot.png" />
+
+      <div className="app-container">
+        <ChatMessages
+          chatMessages={chatMessages}
+        />
+        <ChatInput
+          chatMessages={chatMessages}
+          setChatMessages={setChatMessages}
+        />
+      </div>
+    </>
   );
 }
 

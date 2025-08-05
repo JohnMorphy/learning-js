@@ -8,7 +8,16 @@ import searchIcon from '../assets/images/icons/search-icon.png'
 import cartIcon from '../assets/images/icons/cart-icon.png'
 import { useState } from 'react';
 
-export default function Header({ cart }) {
+// type Alias
+type HeaderProps = {
+    cart: {
+        productId: string;
+        quantity: number;
+        deliveryOptionId: string;
+    }[];
+}
+
+export default function Header({ cart }: HeaderProps) {
 
     const [searchParams] = useSearchParams();
 
@@ -20,7 +29,7 @@ export default function Header({ cart }) {
         totalQuantity += Number(cartItem.quantity);
     });
 
-    const changeSearch = (event) => {
+    const changeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchInput(event.target.value);
     }
 
@@ -28,7 +37,7 @@ export default function Header({ cart }) {
         navigate(`/?search=${searchInput}`);
     }
 
-    const searchOnEnter = (event) => {
+    const searchOnEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Enter") {
             search();
         }
@@ -66,7 +75,6 @@ export default function Header({ cart }) {
                 <NavLink className="orders-link header-link" to="/orders">
                     <span className="orders-text">Orders</span>
                 </NavLink>
-
                 <NavLink className="cart-link header-link" to="/checkout">
                     <img className="cart-icon" src={cartIcon} />
                     <div className="cart-quantity">{totalQuantity}</div>
